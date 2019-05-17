@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".FavoritesActivity"></activity>
-        <activity android:name=".SettingsActivity" />
+        <activity android:name=".NowPlayingActivity" />
         <activity android:name=".SongListActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

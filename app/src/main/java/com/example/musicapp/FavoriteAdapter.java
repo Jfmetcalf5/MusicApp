@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class SongAdapter extends ArrayAdapter<Song> {
+public class FavoriteAdapter extends ArrayAdapter<Song> {
 
-    public SongAdapter(Activity context, ArrayList<Song> words) {
+    public FavoriteAdapter(Activity context, ArrayList<Song> words) {
         super(context, 0, words);
     }
 
@@ -26,7 +26,7 @@ public class SongAdapter extends ArrayAdapter<Song> {
         View listItemView = convertView;
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.song_list_layout, parent, false);
+                    R.layout.favorite_list_layout, parent, false);
         }
 
         TextView titleTextView = listItemView.findViewById(R.id.song_title);
@@ -40,5 +40,5 @@ public class SongAdapter extends ArrayAdapter<Song> {
 
         return listItemView;
     }
-}
 
+}

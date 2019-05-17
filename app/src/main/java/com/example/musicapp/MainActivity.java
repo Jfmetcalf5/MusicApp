@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent numbersIntent = new Intent(MainActivity.this, SettingsActivity.class);
+                Intent numbersIntent = new Intent(MainActivity.this, NowPlayingActivity.class);
                 startActivity(numbersIntent);
             }
         });
