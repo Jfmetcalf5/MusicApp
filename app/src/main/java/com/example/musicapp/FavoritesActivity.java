@@ -19,6 +19,13 @@ public class FavoritesActivity extends AppCompatActivity {
 
         setTitle(R.string.favorites);
 
+        String songTitle = NowPlayingDataHolder.getInstance().title;
+        if (songTitle == "") {
+            getSupportActionBar().setSubtitle("No song selected...");
+        } else {
+            getSupportActionBar().setSubtitle("Now playing: " + songTitle);
+        }
+
         final ArrayList<Song> songs = new ArrayList<>();
         songs.add(new Song("title1", "author1", "details for 1"));
         songs.add(new Song("title4", "author4", "details for 4"));
@@ -32,18 +39,17 @@ public class FavoritesActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.favorite_list_view);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.v("SongListActivity","Item " + position + " clicked");
-                Intent intent = new Intent(FavoritesActivity.this, NowPlayingActivity.class);
-                intent.putExtra("title",songs.get(position).getTitle());
-                intent.putExtra("author",songs.get(position).getAuthor());
-                intent.putExtra("details",songs.get(position).getDetails());
-                startActivity(intent);
-            }
-        });
-
         listView.setAdapter(favoriteAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        String songTitle = NowPlayingDataHolder.getInstance().title;
+        if (songTitle == "") {
+            getSupportActionBar().setSubtitle("No song selected...");
+        } else {
+            getSupportActionBar().setSubtitle("Now playing: " + songTitle);
+        }
+        super.onResume();
     }
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -18,6 +19,13 @@ public class SongListActivity extends AppCompatActivity {
         setContentView(R.layout.song_list_view);
 
         setTitle(R.string.songs);
+
+        String songTitle = NowPlayingDataHolder.getInstance().title;
+        if (songTitle == "") {
+            getSupportActionBar().setSubtitle("No song selected...");
+        } else {
+            getSupportActionBar().setSubtitle("Now playing: " + songTitle);
+        }
 
         final ArrayList<Song> songs = new ArrayList<>();
         songs.add(new Song("title1", "author1", "details for 1"));
@@ -41,18 +49,17 @@ public class SongListActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.song_list_view);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.v("SongListActivity","Item " + position + " clicked");
-                Intent intent = new Intent(SongListActivity.this, NowPlayingActivity.class);
-                intent.putExtra("title",songs.get(position).getTitle());
-                intent.putExtra("author",songs.get(position).getAuthor());
-                intent.putExtra("details",songs.get(position).getDetails());
-                startActivity(intent);
-            }
-        });
-
         listView.setAdapter(songAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        String songTitle = NowPlayingDataHolder.getInstance().title;
+        if (songTitle == "") {
+            getSupportActionBar().setSubtitle("No song selected...");
+        } else {
+            getSupportActionBar().setSubtitle("Now playing: " + songTitle);
+        }
+        super.onResume();
     }
 }

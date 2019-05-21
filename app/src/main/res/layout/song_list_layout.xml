@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
 android:id="@+id/song_layout"
-android:orientation="vertical"
+android:orientation="horizontal"
 xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
 android:layout_height="match_parent">
 
-<TextView
-    android:id="@+id/song_title"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
-<TextView
-    android:id="@+id/author"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
-<TextView
-    android:id="@+id/details"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/song_title"
+        android:padding="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/author"
+        android:padding="16dp"
+        android:layout_below="@id/song_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/details"
+        android:padding="16dp"
+        android:layout_below="@id/author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/play_button"
+        android:padding="16dp"
+        android:text="@string/play"
+        android:layout_alignParentRight="true"
+        android:background="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
