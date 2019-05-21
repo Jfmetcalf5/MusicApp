@@ -16,6 +16,9 @@ public class SongListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.song_list_view);
+
+        setTitle(R.string.songs);
+
         final ArrayList<Song> songs = new ArrayList<>();
         songs.add(new Song("title1", "author1", "details for 1"));
         songs.add(new Song("title2", "author2", "details for 2"));
